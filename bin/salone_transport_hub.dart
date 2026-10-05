@@ -1,34 +1,7 @@
-// Salone Transport Hub - Assignment 1 console prototype (PROG 202)
-//
-// What this prototype shows:
-//  1. Register and log in as Passenger, Driver or Administrator.
-//  2. View and compare fares for different transport modes.
-//  3. Passenger requests transport (choose the type, number of people and extra
-//     seats to keep free). A verified driver accepts or declines. The passenger
-//     then accepts or rejects that driver.
-//  4. Administrator verifies drivers, updates fares and reviews fare issue reports.
-//  5. Notifications: one user does something, another user logs in (or refreshes)
-//     and sees it, like a lecturer uploading a grade for a student to see.
-//
-// FARE DATA (important):
-//  - "Official price list": fares from the price lists supplied for this project.
-//  - "Published sample (news)": fares from news reports of Ministry announcements.
-//  - "Simulated estimate": calculated by this prototype from an assumed distance and
-//    an assumed rate per km. It is NOT an official fare. It only exists so every
-//    transport mode can be demonstrated for every route.
-//
-// There is NO database. Everything is kept in memory and is lost when the program
-// closes. Passwords are stored as plain text because this is only a prototype.
-//
-// Demo accounts:  admin / admin123   |   drivers: rider1, kekeh1, taxi1, taxi2,
-//                 van1, poda1, bus1 (password for drivers: 1234)
+ import 'dart:io';
 
-import 'dart:io';
-
-// ------------------------------------------------------------
+    
 // FARE AND PLACE DATA
-// ------------------------------------------------------------
-
 const String disclaimer =
     'Note: [Official price list] fares come from the price lists supplied for this project.\n'
     '[Published sample (news)] fares come from news reports of Ministry announcements.\n'
@@ -365,9 +338,9 @@ Map<String, dynamic>? findUser(String username) {
   return null;
 }
 
-// ------------------------------------------------------------
+// ----------------------
 // INPUT HELPERS
-// ------------------------------------------------------------
+// ----------------------
 
 String readText(String prompt) {
   stdout.write(prompt);
@@ -481,9 +454,9 @@ bool validRoute(String a, String b) {
   return true;
 }
 
-// ------------------------------------------------------------
+// --------------------
 // FARE LOGIC
-// ------------------------------------------------------------
+// --------------------
 
 // Simulated road distance between two places.
 int distanceKm(String a, String b) {
@@ -593,9 +566,9 @@ String requestFareText(
   return 'NLe ${each.toStringAsFixed(1)} for the whole trip [$source]';
 }
 
-// ------------------------------------------------------------
+// ----------------------
 // NOTIFICATIONS
-// ------------------------------------------------------------
+// ----------------------
 
 void notify(String to, String text) {
   notifications.add({'to': to, 'text': text, 'read': false});
@@ -634,9 +607,9 @@ void printMenuHeader(String title) {
   if (unread > 0) print(' You have $unread new notification(s).');
 }
 
-// ------------------------------------------------------------
+// --------------------------------------
 // FARE SCREENS (used by everyone)
-// ------------------------------------------------------------
+// --------------------------------------
 
 void viewFares() {
   printHeader('VIEW TRANSPORTATION FARES');
@@ -686,9 +659,9 @@ void browseFares() {
   }
 }
 
-// ------------------------------------------------------------
+// ----------------------------
 // REGISTER AND LOG IN
-// ------------------------------------------------------------
+// ----------------------------
 
 String readNewUsername() {
   while (true) {
@@ -774,9 +747,9 @@ void loginUser() {
   print('Too many failed attempts. Returning to the main menu.');
 }
 
-// ------------------------------------------------------------
-// PASSENGER
-// ------------------------------------------------------------
+// -----------------------
+//      PASSENGER
+// -----------------------
 
 void passengerMenu() {
   while (true) {
@@ -1087,9 +1060,9 @@ void myFareReports() {
   if (count == 0) print('  You have not submitted any reports.');
 }
 
-// ------------------------------------------------------------
+// --------------------
 // DRIVER
-// ------------------------------------------------------------
+// --------------------
 
 void driverMenu() {
   while (true) {
@@ -1223,9 +1196,9 @@ void driverTrips() {
   }
 }
 
-// ------------------------------------------------------------
+// ---------------------
 // ADMINISTRATOR
-// ------------------------------------------------------------
+// ---------------------
 
 void adminMenu() {
   while (true) {
@@ -1456,10 +1429,9 @@ void dashboard() {
   );
 }
 
-// ------------------------------------------------------------
+// -----------------
 // MAIN
-// ------------------------------------------------------------
-
+// -----------------
 void main() {
   while (true) {
     printHeader('SALONE TRANSPORT HUB');
