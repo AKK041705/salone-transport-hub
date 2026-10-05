@@ -1,0 +1,7 @@
+name: salone_transport_hub
+description: Dart console prototype for a Sierra Leone public transport information platform (PROG 202 Assignment 1).
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: ^3.0.0
