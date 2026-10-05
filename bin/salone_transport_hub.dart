@@ -1,5 +1,4 @@
  import 'dart:io';
-
     
 // FARE AND PLACE DATA
 const String disclaimer =
